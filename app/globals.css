@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    /* Keep anchored/scrolled-to elements clear of the sticky header
+       (single 64px main bar). */
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    @apply bg-surface-container-lowest text-on-surface font-body-md text-body-md antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Slim, unobtrusive scrollbar that matches the ice-blue design language. */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f2f7ff;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #dbe2f9;
+    border-radius: 9999px;
+    border: 2px solid #f2f7ff;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c3c6d7;
+  }
+
+  ::selection {
+    background: #dbe1ff;
+    color: #00174b;
+  }
+
+  :focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Horizontal rails used by the "Just Landed" carousel and filter chip rows. */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .shell {
+    @apply mx-auto w-full max-w-shell px-margin-mobile md:px-margin-tablet lg:px-margin;
+  }
+
+  /* Elevation levels 0.5 / 1 / 2 straight out of DESIGN.md */
+  .plate {
+    @apply border border-line bg-surface-container-lowest shadow-plate;
+  }
+  .lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:border-soft hover:shadow-lift;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
